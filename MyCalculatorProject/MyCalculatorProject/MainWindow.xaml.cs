@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Collections.ObjectModel;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -23,9 +24,12 @@ namespace MyCalculatorProject
         public MainWindow()
         {
             InitializeComponent();
+            History.ItemsSource = Operation;
         }
         
         BinaryOperation _Op = new BinaryOperation();
+        ObservableCollection<BinaryOperation> Operation = new ObservableCollection<BinaryOperation>();
+        
         private void Number_Clicked(object sender, RoutedEventArgs e)
         {
             _Op.StrOperand += ((Button)sender).Content.ToString();
@@ -33,6 +37,7 @@ namespace MyCalculatorProject
         }
         private void Operator_Clicked(object sender, RoutedEventArgs e)
         {
+            Operation.Add(_Op);
             _Op = new BinaryOperation
             {
                 PreviousTotal = _Op.GetResults(),
