@@ -24,11 +24,11 @@ namespace MyCalculatorProject
         public MainWindow()
         {
             InitializeComponent();
-            History.ItemsSource = Operation;
+            History.ItemsSource = _Operation;
         }
         
         BinaryOperation _Op = new BinaryOperation();
-        ObservableCollection<BinaryOperation> Operation = new ObservableCollection<BinaryOperation>();
+        ObservableCollection<Operation> _Operation = new ObservableCollection<Operation>();
         
         private void Number_Clicked(object sender, RoutedEventArgs e)
         {
@@ -37,13 +37,30 @@ namespace MyCalculatorProject
         }
         private void Operator_Clicked(object sender, RoutedEventArgs e)
         {
-            Operation.Add(_Op);
+            _Operation.Add(_Op);
             _Op = new BinaryOperation
             {
-                PreviousTotal = _Op.GetResults(),
+                PreviousTotal = _Op.GetResults,
                 Operator = ((Button)sender).Content.ToString()
             };
-            Results.Text = _Op.GetResults().ToString();
+            Results.Text = _Op.ToString();
+        }
+
+        private void UnaryOperator_Clicked(object sender, RoutedEventArgs e)
+        {
+            _Operation.Add(_Op);
+            var op = new Operation
+            {
+                PreviousTotal = _Op.GetResults,
+                Operator = ((Button)sender).Content.ToString()
+            };
+            _Operation.Add(op);
+            _Op = new BinaryOperation
+            {
+                PreviousTotal = op.GetResults,
+                Operator = "+"
+            };
+            Results.Text = _Op.PreviousTotal.ToString();
         }
     }
 }
