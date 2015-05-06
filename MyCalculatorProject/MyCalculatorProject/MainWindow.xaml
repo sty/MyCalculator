@@ -28,7 +28,7 @@
             <RowDefinition Height="279*"/>
         </Grid.RowDefinitions>
         <TextBlock HorizontalAlignment="Left" Width="41" Grid.ColumnSpan="1"/>
-        <TextBlock Grid.ColumnSpan="2"/>
+        <TextBlock Name="Results" Grid.ColumnSpan="2"/>
         <ListBox Grid.Row="1">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -54,25 +54,25 @@
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions >
             <Button Command="{Binding Clear}" >C</Button>
-            <Button Grid.Row="3" Grid.Column="0" >1</Button>
-            <Button Grid.Row="3" Grid.Column="1" >2</Button>
-            <Button Grid.Row="3" Grid.Column="2" >3</Button>
-            <Button Grid.Row ="2" Grid.Column="0" >4</Button>
-            <Button Grid.Row ="2" Grid.Column="1" >5</Button>
-            <Button Grid.Row ="2" Grid.Column="2" >6</Button>
-            <Button Grid.Row ="1" Grid.Column="0" >7</Button>
-            <Button Grid.Row ="1" Grid.Column="1" >8</Button>
-            <Button Grid.Row ="1" Grid.Column="2" >9</Button>
-            <Button Grid.Row ="2" Grid.Column="3" ></Button>
-            <Button Grid.Row ="3" Grid.Column="3"></Button>
-            <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" >0</Button>
-            <Button Grid.Row="0" Grid.Column="3" >←</Button>
-            <Button Grid.Row="0" Grid.Column="4" >-</Button>
-            <Button Grid.Row="1" Grid.Column="3">√</Button>
-            <Button Grid.Row="1" Grid.Column="4">+</Button>
-            <Button Grid.Row="2" Grid.Column="4" >x</Button>
-            <Button Grid.Row="3" Grid.Column="4" >/</Button>
-            <Button Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2">=</Button>
+            <Button Grid.Row="3" Grid.Column="0" Click="Number_Clicked">1</Button>
+            <Button Grid.Row="3" Grid.Column="1" Click="Number_Clicked">2</Button>
+            <Button Grid.Row="3" Grid.Column="2" Click="Number_Clicked">3</Button>
+            <Button Grid.Row ="2" Grid.Column="0" Click="Number_Clicked">4</Button>
+            <Button Grid.Row ="2" Grid.Column="1" Click="Number_Clicked">5</Button>
+            <Button Grid.Row ="2" Grid.Column="2" Click="Number_Clicked">6</Button>
+            <Button Grid.Row ="1" Grid.Column="0" Click="Number_Clicked">7</Button>
+            <Button Grid.Row ="1" Grid.Column="1" Click="Number_Clicked">8</Button>
+            <Button Grid.Row ="1" Grid.Column="2" Click="Number_Clicked">9</Button>
+            <Button Grid.Row ="2" Grid.Column="3" Click="Operator_Clicked"> </Button>
+            <Button Grid.Row ="3" Grid.Column="3" Click="Operator_Clicked"> ></Button>
+            <Button Grid.Row="4" Grid.Column="0" Click="Number_Clicked" Grid.ColumnSpan="2" >0</Button>
+            <Button Grid.Row="0" Grid.Column="3" Click=" Operator_Clicked">←</Button>
+            <Button Grid.Row="0" Grid.Column="4" Click=" Operator_Clicked">-</Button>
+            <Button Grid.Row="1" Grid.Column="3" Click=" Operator_Clicked">√</Button>
+            <Button Grid.Row="1" Grid.Column="4" Click=" Operator_Clicked">+</Button>
+            <Button Grid.Row="2" Grid.Column="4" Click=" Operator_Clicked">x</Button>
+            <Button Grid.Row="3" Grid.Column="4" Click=" Operator_Clicked">/</Button>
+            <Button Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2" Click=" Operator_Clicked">=</Button>
         </Grid>
     </Grid>
 </Window>
