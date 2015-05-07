@@ -35,7 +35,7 @@ namespace MyCalculatorProject
             get { return new DeadCommand(); }
 
         }
-  public virtual ICommand Backspace
+  public virtual ICommand BackSpace
    {
        get { return new DeadCommand(); }
 
@@ -65,7 +65,7 @@ namespace MyCalculatorProject
     }
     public class BinaryOperation:Operation
     {
-        public override ICommand Backspace
+        public override ICommand BackSpace
         {
 	get 
 	{
