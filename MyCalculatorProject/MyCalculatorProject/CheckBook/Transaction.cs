@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net.Http;
 namespace MyCalculatorProject.CheckBook
 
 {
@@ -123,11 +124,40 @@ namespace MyCalculatorProject.CheckBook
                 };
             }
         }
-        public void Fill()
+       
+       
+        private string _Name;
+
+        public string Name
+        {
+            get { return _Name; }
+            set { _Name = value; OnPropertyChanged(); }
+        }
+        private string _Email;
+
+        public string Email
+        {
+            get { return _Email; }
+            set { _Email = value; OnPropertyChanged(); }
+        }
+        private string _Picture;
+
+        public string Picture
+        {
+            get { return _Picture; }
+            set { _Picture = value; OnPropertyChanged(); }
+        }
+        public async void Fill()
         {
             Transactions = _Db.Transactions.Local;
             _Db.Accounts.ToList();
             _Db.Transactions.ToList();
+             var wnd = new LoginWindow();
+            var token = await wnd.Login();
+            var http = new HttpClient();
+            dynamic me = Newtonsoft.Json.JsonConvert.DeserializeObject(await http.GetStringAsync("https://graph.facebook.com/me?access_token=" + token));
+            Name = me.name;
+            Picture = "https://graph.facebook.com/" + me.id + "/picture";
 
         }
     }
