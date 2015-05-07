@@ -77,7 +77,7 @@ namespace MyCalculatorProject
         {
             get
             {
-                return new GenericCommand {
+                return new DelegateCommand {
                     ExecuteFunction = p => StrOperand += p
                 };
             }
@@ -185,7 +185,7 @@ namespace MyCalculatorProject
             _Op.StrOperand = _Op.StrOperand.Substring(0, _Op.StrOperand.Length - 1);
         }
     }
-    public class GenericCommand : ICommand
+    public class DelegateCommand : ICommand
     {
         public Predicate<object> CanExecuteFunction { get; set; }
         public Action<object> ExecuteFunction { get; set; }
@@ -196,10 +196,15 @@ namespace MyCalculatorProject
             else
                 return true;
         }
-        public event EventHandler CanExecuteChanged;
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
         public void OnCanExecuteChanged()
         {
-            if (CanExecuteChanged != null) CanExecuteChanged(this, new EventArgs());
+            CommandManager.InvalidateRequerySuggested();
+
         }
         public void Execute(object parameter)
         {

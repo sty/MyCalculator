@@ -23,14 +23,14 @@ namespace MyCalculatorProject
             get { return _Operations; }
             set { _Operations = value; OnPropertyChanged(); }
         }
-        GenericCommand _Clear;
+        DelegateCommand _Clear;
         public ICommand Clear
         {
             get
             {
                 if (_Clear == null)
                 {
-                    _Clear = new GenericCommand
+                    _Clear = new DelegateCommand
                     {
                         ExecuteFunction = x =>
                         {

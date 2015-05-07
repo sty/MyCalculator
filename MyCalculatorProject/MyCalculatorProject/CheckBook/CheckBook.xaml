@@ -19,7 +19,7 @@
         <GridSplitter Height="5" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Grid.ColumnSpan="3" />
         <DataGrid x:Name="transactionsDataGrid" IsSynchronizedWithCurrentItem="True" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Transactions}" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="0,0,5,0">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Account}" Header="Account" Width="SizeToHeader"/>
+                <DataGridTextColumn Binding="{Binding Account.Name}" Header="Account" Width="SizeToHeader"/>
                 <DataGridTextColumn x:Name="amountColumn" Binding="{Binding Amount}" Header="Amount" Width="SizeToHeader"/>
                 <DataGridTemplateColumn x:Name="dateColumn" Header="Date" Width="SizeToHeader">
                     <DataGridTemplateColumn.CellTemplate>
@@ -45,7 +45,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Label Content="Account:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
-            <ComboBox Grid.Column="1" SelectedItem="{Binding Account}" Height="Auto" ItemsSource="{Binding VM.Accounts}" Margin="3" Grid.Row="0" VerticalAlignment="Center" >
+            <ComboBox DisplayMemberPath="Name" Grid.Column="1" SelectedItem="{Binding Account}" Height="Auto" ItemsSource="{Binding ElementName=root, Path=DataContext.Accounts}" Margin="3,6,3,5" Grid.Row="0" VerticalAlignment="Center" >
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel/>
