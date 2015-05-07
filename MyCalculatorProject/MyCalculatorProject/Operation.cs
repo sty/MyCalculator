@@ -46,7 +46,7 @@ namespace MyCalculatorProject
             {
                 switch (Operator)
                 {
-                    case "X^2":
+                    case "^2":
                         return PreviousTotal * PreviousTotal;
                     case "√":
                         return (float)Math.Sqrt((double)PreviousTotal);

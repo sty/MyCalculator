@@ -49,8 +49,8 @@ namespace MyCalculatorProject
 
         private void UnaryOperator_Clicked(object sender, RoutedEventArgs e)
         {
-         
-            VM.Op = new Operation
+            
+            var op = new Operation
             {
                 PreviousTotal = VM.Op.GetResults,
                 Operator = ((Button)sender).Content.ToString()
@@ -62,5 +62,6 @@ namespace MyCalculatorProject
                 Operator = "+"
             };
         }
+        }
     }
-}
+
