@@ -10,13 +10,13 @@
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Margin" Value="5,5,5,5"/>
         </Style>
-        <Style TargetType="TextBlock">
-            <Setter Property="TextAlignment" Value="Right"/>
-            <Setter Property="Background" Value="Black"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Padding" Value="0,0,5,5" />
-            <Setter Property="FontSize" Value="34"/>
-        </Style>
+        <Style TargetType="TextBlock" x:Key="Large">
+                <Setter Property="TextAlignment" Value="Right"/>
+                <Setter Property="FontSize" Value="34"/>
+                <Setter Property="Background" Value="Black" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="Padding" Value="0,0,5,5" />
+            </Style>
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -27,8 +27,9 @@
             <RowDefinition Height="41"/>
             <RowDefinition Height="279*"/>
         </Grid.RowDefinitions>
-        <TextBlock HorizontalAlignment="Left" Width="41" Grid.ColumnSpan="1" />
-        <TextBlock Grid.ColumnSpan="2" DataContext="{Binding Op}" Text="{Binding DisplayText, Mode=OneWay}"/>
+        <TextBlock Style="{StaticResource Large}" Grid.ColumnSpan="1" DataContext="{Binding Op}" Text="{Binding Operator, Mode=OneWay}" Margin="0,0,118,0" />
+
+        <TextBlock  Style="{StaticResource Large}"  Grid.ColumnSpan="2" DataContext="{Binding Op}" Text="{Binding DisplayText, Mode=OneWay}" Margin="41,0,0,0"/>
         <ListBox Name="History" Grid.Row="1">
 
         </ListBox>
@@ -70,7 +71,7 @@
             <Button Grid.Row ="1" Grid.Column="0" Click="Number_Clicked">7</Button>
             <Button Grid.Row ="1" Grid.Column="1" Click="Number_Clicked">8</Button>
             <Button Grid.Row ="1" Grid.Column="2" Click="Number_Clicked">9</Button>
-            <Button Grid.Row ="2" Grid.Column="3" Click="UnaryOperator_Clicked">Sqr</Button>
+            <Button Grid.Row ="2" Grid.Column="3" Click="UnaryOperator_Clicked">X^2</Button>
             <Button Grid.Row ="3" Grid.Column="3" Click="Operator_Clicked"></Button>
             <Button Grid.Row="4" Grid.Column="0" Click="Number_Clicked" Grid.ColumnSpan="2" >0</Button>
             <Button Grid.Row="0" Grid.Column="3" Click=" Operator_Clicked">←</Button>
