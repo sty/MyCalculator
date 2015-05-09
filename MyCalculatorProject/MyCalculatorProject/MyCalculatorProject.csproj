@@ -94,6 +94,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="CheckBook\MyCheckBook.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -108,6 +112,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CheckBookDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="CheckBookDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CheckBookDataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="CheckBook\CbDb.cs" />
     <Compile Include="CheckBook\CheckBook.xaml.cs">
       <DependentUpon>CheckBook.xaml</DependentUpon>
@@ -115,20 +124,16 @@
     <Compile Include="CheckBook\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CheckBook\MyCheckBook.xaml.cs">
+      <DependentUpon>MyCheckBook.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CheckBook\Transaction.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="NewCheckBook.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NewCheckBook.xaml.cs">
-      <DependentUpon>NewCheckBook.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Operation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -157,6 +162,17 @@
     </None>
     <None Include="CheckBookDataSet.xss">
       <DependentUpon>CheckBookDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CheckBookDataSet1.xsc">
+      <DependentUpon>CheckBookDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="CheckBookDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CheckBookDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CheckBookDataSet1.xss">
+      <DependentUpon>CheckBookDataSet1.xsd</DependentUpon>
     </None>
     <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
