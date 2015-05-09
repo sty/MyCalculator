@@ -23,5 +23,12 @@ namespace MyCalculatorProject
         {
             InitializeComponent();
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            MyCalculatorProject.CheckBookDataSet checkBookDataSet = ((MyCalculatorProject.CheckBookDataSet)(this.FindResource("checkBookDataSet")));
+            
+        }
     }
 }
