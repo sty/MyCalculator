@@ -69,6 +69,8 @@
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -94,7 +96,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CheckBook\MyCheckBook.xaml">
+    <Page Include="CheckBook\NewCheckBookWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -102,21 +104,26 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="AccountDatabase.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AccountDatabase.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AccountDatabase.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AccountDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AccountDatabase.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AccountDatabase.edmx</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="CalculatorVM.cs" />
-    <Compile Include="CheckBookDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CheckBookDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="CheckBookDataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CheckBookDataSet1.xsd</DependentUpon>
-    </Compile>
     <Compile Include="CheckBook\CbDb.cs" />
     <Compile Include="CheckBook\CheckBook.xaml.cs">
       <DependentUpon>CheckBook.xaml</DependentUpon>
@@ -124,8 +131,8 @@
     <Compile Include="CheckBook\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CheckBook\MyCheckBook.xaml.cs">
-      <DependentUpon>MyCheckBook.xaml</DependentUpon>
+    <Compile Include="CheckBook\NewCheckBookWindow.xaml.cs">
+      <DependentUpon>NewCheckBookWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="CheckBook\Transaction.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -152,30 +159,25 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="CheckBookDataSet.xsc">
-      <DependentUpon>CheckBookDataSet.xsd</DependentUpon>
+    <EntityDeploy Include="AccountDatabase.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AccountDatabase.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="AccountDatabase.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AccountDatabase.edmx</DependentUpon>
+      <LastGenOutput>AccountDatabase.Context.cs</LastGenOutput>
     </None>
-    <None Include="CheckBookDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>CheckBookDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
+    <None Include="AccountDatabase.edmx.diagram">
+      <DependentUpon>AccountDatabase.edmx</DependentUpon>
     </None>
-    <None Include="CheckBookDataSet.xss">
-      <DependentUpon>CheckBookDataSet.xsd</DependentUpon>
+    <None Include="AccountDatabase.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AccountDatabase.edmx</DependentUpon>
+      <LastGenOutput>AccountDatabase.cs</LastGenOutput>
     </None>
-    <None Include="CheckBookDataSet1.xsc">
-      <DependentUpon>CheckBookDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="CheckBookDataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>CheckBookDataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="CheckBookDataSet1.xss">
-      <DependentUpon>CheckBookDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\MyCalculatorProject.CheckBook.Transaction.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -197,15 +199,6 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CheckBook.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="CheckBook_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>CheckBook.mdf</DependentUpon>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
@@ -221,6 +214,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

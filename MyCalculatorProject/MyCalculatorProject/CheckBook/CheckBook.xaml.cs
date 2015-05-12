@@ -19,15 +19,18 @@ namespace MyCalculatorProject.CheckBook
     /// </summary>
     public partial class CheckBook : Window
     {
+        private CbDb _VM = new CbDb();
         public CheckBook()
         {
             InitializeComponent();
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var VM = new CheckBookVM();
-            DataContext = VM;
-            VM.Fill();
+         
+            System.Windows.Data.CollectionViewSource transactionViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("transactionViewSource")));
+            // Load data by setting the CollectionViewSource.Source property:
+            // transactionViewSource.Source = [generic data source]
+            _VM.Transactions.ToList();
         }
     }
 }
