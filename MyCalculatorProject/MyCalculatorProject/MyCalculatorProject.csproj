@@ -124,10 +124,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="CalculatorVM.cs" />
+    <Compile Include="CheckBook\Account.cs" />
     <Compile Include="CheckBook\CbDb.cs" />
     <Compile Include="CheckBook\CheckBook.xaml.cs">
       <DependentUpon>CheckBook.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CheckBook\CheckBookVM.cs" />
     <Compile Include="CheckBook\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
@@ -141,6 +143,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\201505140926039_InitialCreate.cs" />
+    <Compile Include="Migrations\201505140926039_InitialCreate.Designer.cs">
+      <DependentUpon>201505140926039_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Operation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -155,6 +162,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Migrations\201505140926039_InitialCreate.resx">
+      <DependentUpon>201505140926039_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -177,6 +187,7 @@
       <LastGenOutput>AccountDatabase.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\MyCalculatorProject.CheckBook.Account.datasource" />
     <None Include="Properties\DataSources\MyCalculatorProject.CheckBook.Transaction.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
