@@ -55,22 +55,21 @@ namespace MyCalculatorProject.CheckBook
         {
             get
             {
-                if (_SaveTransaction == null)
-                {
+               
                     _SaveTransaction = new DelegateCommand
                     {
                         ExecuteFunction = x =>
                         {
                             _Db.Transactions.Add(_NewTransaction);
-                            Account updateAccount = (from A in Accounts where A == _NewTransaction.Account select A).Single();
-                            updateAccount.Total += _NewTransaction.Amount;
+                            Account Accnt = (from i in Accounts where i == _NewTransaction.Account select i).Single();
+                            Accnt.Total += _NewTransaction.Amount;
                             _Db.SaveChanges(); NewTransaction = new Transaction { Date = DateTime.Now };
 
                         },
                         CanExecuteFunction = x => NewTransaction.Amount != 0 && NewTransaction.Account != null
                     };
                     _NewTransaction.PropertyChanged += (s, e) => _SaveTransaction.OnCanExecuteChanged();
-                }
+                
                 return _SaveTransaction;
             }
 
